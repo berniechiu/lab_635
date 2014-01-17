@@ -1,5 +1,6 @@
 Lab635::Application.routes.draw do
   root :to => 'pages#index'
+  get 'intro' => 'pages#intro'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

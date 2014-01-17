@@ -16,7 +16,7 @@ $colHover       : #ffbbbc;
         &:hover, &:focus {
             color: $colHover; }}
     .navbar-nav {
-        margin-left: 20px;
+        margin-left: -15px;
         > li {
             > a {
                 color: $colDefault;

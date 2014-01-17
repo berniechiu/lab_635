@@ -19,3 +19,21 @@ body {
     margin-left: -10px;
   }
 }
+
+.news {
+  list-style-image: url('paper.png');
+
+  li {
+    margin-top: 15px;
+    padding-left: 5px;
+  }
+}
+
+.research-area {
+  list-style-image: url('book.png');
+
+  li {
+    margin-top: 15px;
+    padding-left: 5px;
+  }
+}
