@@ -1,0 +1,21 @@
+@import "bootstrap";
+
+// global
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.jumbotron {
+  background-image: url('light_grey.png');
+
+  h1 {
+    text-shadow: 4px 4px 3px rgba(20%,20%,40%,0.5);
+    margin-left: -17px;
+  }
+
+  p {
+    margin-left: -10px;
+  }
+}

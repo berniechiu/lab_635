@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lab635</title>
+  <title>商業智慧管理研究發展中心</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
-
+  <div class="container">
+    <%= render 'header' %>
+    <%= yield %>
+  </div>
 </body>
 </html>
