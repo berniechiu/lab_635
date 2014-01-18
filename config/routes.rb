@@ -1,4 +1,6 @@
 Lab635::Application.routes.draw do
+  devise_for :admins
+
   root :to => 'pages#index'
   get 'intro' => 'pages#intro'
   get 'professor' => 'pages#professor'

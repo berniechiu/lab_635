@@ -11,5 +11,46 @@
       <li><%= link_to "指導教授", professor_path %></li>
       <li><a href="#">實驗室成員</a></li>
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if admin_signed_in? %>
+        <span class="welcome">歡迎 <%= current_admin.email %> </span>
+        <%= link_to "管理者登出", destroy_admin_session_path, :class => "btn btn-default navbar-btn admin-signin-btn", method: :delete %>
+      <% else %>
+        <button type="button" class="btn btn-default navbar-btn admin-signin-btn" data-toggle="modal" data-target="#adminSignIn">管理者登入</button>
+      <% end %>
+    </ul>
   </div>
 </div>
+
+<% if not admin_signed_in? %>
+<!-- Modal -->
+<div class="modal fade" id="adminSignIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">管理者登入</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(:admin, :url => session_path(:admin), :html => {:class => "form-horizontal", :role => 'form' }) do |f| %>
+          <div class="form-group">
+            <%= f.label :email, :class => "col-sm-2 control-label" %>
+            <div class="col-sm-8">
+            <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "密碼", :class => "col-sm-2 control-label" %>
+            <div class="col-sm-8">
+            <%= f.password_field :password, :class => "form-control", :placeholder => "密碼" %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit '登入', :class => "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>
