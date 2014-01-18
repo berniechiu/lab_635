@@ -1,3 +1,37 @@
+<% if admin_signed_in? %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">新增消息</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_for @post, :html => {:class => "form-horizontal", :role => 'form' } do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="form-group">
+            <%= f.label :title, "標題", :class => "col-md-2 control-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :title, :class => "form-control", :placeholder => "標題" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :link, "連結", :class => "col-md-2 control-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :link, :class => "form-control", :placeholder => "連結 （選擇性）" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <%= f.submit "送出", :class => "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <div>
+</div>
+<% end %>
+
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default">
@@ -6,8 +40,7 @@
       </div>
       <div class="panel-body">
         <ul class="news">
-          <li>狂賀~ 翁頌舜教授指導李佳馨學姊榮獲 2013 TOPCO 崇越論文大賞優等!</li>
-          <li>Lab 說明會 2009/09/14 科技大樓 635 AM10:00</li>
+          <%= render @posts %>
         </ul>
       </div>
     </div>

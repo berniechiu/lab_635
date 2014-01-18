@@ -5,6 +5,9 @@ Lab635::Application.routes.draw do
   get 'intro' => 'pages#intro'
   get 'professor' => 'pages#professor'
 
+  post 'posts' => 'posts#create'
+  delete 'posts/:id' => 'posts#destroy', as: "destroy_post"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
