@@ -1,10 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    if admin_signed_in?
-      @post = Post.new
-    end
-
+    @post = Post.new if admin_signed_in?
     @posts = Post.all
   end
 
