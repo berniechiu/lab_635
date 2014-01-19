@@ -8,8 +8,8 @@ namespace :db do
     build_default_focus_content
   end
 
-  task grab_professor_info: :environment do
-    grab_professor_info_from_original_site
+  task grab_professor_works: :environment do
+    grab_professor_works_from_original_site
   end
 end
 
@@ -25,6 +25,6 @@ def build_default_focus_content
   end
 end
 
-def grab_professor_info_from_original_site
+def grab_professor_works_from_original_site
 
 end

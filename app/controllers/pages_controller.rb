@@ -7,6 +7,8 @@ class PagesController < ApplicationController
 
   def intro
     @focus = Focus.first
+    @equipment = Equipment.new if admin_signed_in?
+    @equipments = Equipment.all
   end
 
   def professor; end

@@ -1,13 +1,21 @@
 Lab635::Application.routes.draw do
   devise_for :admins
 
+  # Static pages
   root :to => 'pages#index'
   get 'intro' => 'pages#intro'
   get 'professor' => 'pages#professor'
 
+  # CRUD for News (Not all are used but follows RESTful pattern)
   post 'posts' => 'posts#create'
   delete 'posts/:id' => 'posts#destroy', as: "destroy_post"
+
+  # CRUD for Focus
   put 'focuses/:id'  => 'focuses#update', as: "focuses"
+
+  # CRUD for Equipment
+  post 'equipments' => 'Equipments#create', as: "equipments"
+  delete 'equipments/:id' => 'equipments#destroy', as: "destroy_equipment"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
