@@ -5,7 +5,9 @@ class PagesController < ApplicationController
     @posts = Post.all
   end
 
-  def intro; end
+  def intro
+    @focus = Focus.first
+  end
 
   def professor; end
 end

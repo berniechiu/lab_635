@@ -65,3 +65,7 @@ body {
   @extend .control-group;
   @extend .error;
 }
+
+textarea {
+  resize: vertical;
+}

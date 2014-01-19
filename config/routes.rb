@@ -7,6 +7,7 @@ Lab635::Application.routes.draw do
 
   post 'posts' => 'posts#create'
   delete 'posts/:id' => 'posts#destroy', as: "destroy_post"
+  put 'focuses/:id'  => 'focuses#update', as: "focuses"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
