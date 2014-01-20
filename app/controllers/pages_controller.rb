@@ -11,5 +11,7 @@ class PagesController < ApplicationController
     @equipments = Equipment.all
   end
 
-  def professor; end
+  def professor
+    @categories = Category.all
+  end
 end

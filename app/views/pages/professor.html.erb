@@ -28,6 +28,14 @@
         <h3 class="panel-title">學術著作與目錄</h3>
       </div>
       <div class="panel-body">
+        <% @categories.each do |category| %>
+          <h4><span class="glyphicon glyphicon-book"></span> <%= category.name %></h4>
+          <table class="table table-striped">
+            <% category.works.each do |work| %>
+              <tr><td><%= work.title %></td></tr>
+            <% end %>
+          </table>
+        <% end %>
       </div>
     </div>
   <div>
