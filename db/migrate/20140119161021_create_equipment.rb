@@ -2,7 +2,7 @@ class CreateEquipment < ActiveRecord::Migration
   def change
     create_table :equipment do |t|
       t.string :title
-      t.string :amount
+      t.integer :amount
 
       t.timestamps
     end
