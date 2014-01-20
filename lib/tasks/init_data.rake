@@ -27,10 +27,8 @@ def build_default_focus_content
 end
 
 def build_default_categories
-  if Category.all.count == 0
-    Category.create!( [{name: "期刊論文"}, {name: "研討會論文"}, {name: "專書及專書論文"}, 
-                       {name: "技術報告及其他"}] )
-  end
+  Category.create!( [{name: "期刊論文"}, {name: "研討會論文"}, {name: "專書及專書論文"}, 
+                     {name: "技術報告及其他"}] ) if Category.all.count == 0
 end
 
 def grab_professor_works_from_original_site
@@ -48,7 +46,7 @@ def grab_professor_works_from_original_site
   doc.css("table").each_with_index do |table, i|
     category = Category.find_by_name(categories[i])
 
-    table.css("tr td:nth-child(2)").each do |data|
+    table.css("tr td:nth-child(2)").reverse.each do |data|
       work = category.works.build(title: data.at_css("p").text)
       work.save!
     end

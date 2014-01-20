@@ -14,8 +14,12 @@ Lab635::Application.routes.draw do
   put 'focuses/:id'  => 'focuses#update', as: "focuses"
 
   # CRUD for Equipment
-  post 'equipments' => 'Equipments#create', as: "equipments"
+  post 'equipments' => 'equipments#create', as: "equipments"
   delete 'equipments/:id' => 'equipments#destroy', as: "destroy_equipment"
+
+  # CURD for Works
+  post 'works' => 'works#create', as: "works"
+  delete 'works/:id' => 'works#destroy', as: "destroy_work"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

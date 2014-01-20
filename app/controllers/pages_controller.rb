@@ -13,5 +13,6 @@ class PagesController < ApplicationController
 
   def professor
     @categories = Category.all
+    @work = Work.new
   end
 end
