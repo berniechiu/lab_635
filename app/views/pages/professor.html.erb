@@ -65,7 +65,7 @@
           <h4><span class="glyphicon glyphicon-book"></span> <%= category.name %></h4>
           <table class="table table-striped">
             <% category.works.each do |work| %>
-              <tr><td><%= work.title %> | <%= link_to("刪除", destroy_work_path(work), :class => "btn btn-danger btn-xs", method: :delete) if admin_signed_in? %></td></tr>
+              <tr><td><%= work.title %> <%= link_to("刪除", destroy_work_path(work), :class => "btn btn-danger btn-xs", method: :delete) if admin_signed_in? %></td></tr>
             <% end %>
           </table>
         <% end %>
