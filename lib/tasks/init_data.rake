@@ -35,6 +35,7 @@ def grab_professor_works_from_original_site
   require 'open-uri'
 
   url = "http://140.124.77.221/lab635/professer1.html"
+  # Nokogiri: a great tool for grabbing HTML content
   doc = Nokogiri::HTML(open(url))
 
   categories = []
@@ -46,6 +47,7 @@ def grab_professor_works_from_original_site
   doc.css("table").each_with_index do |table, i|
     category = Category.find_by_name(categories[i])
 
+    # Reverse makes the data to insert the titles by date
     table.css("tr td:nth-child(2)").reverse.each do |data|
       work = category.works.build(title: data.at_css("p").text)
       work.save!
