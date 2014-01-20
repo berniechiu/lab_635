@@ -34,5 +34,23 @@ def build_default_categories
 end
 
 def grab_professor_works_from_original_site
+  require 'open-uri'
 
+  url = "http://140.124.77.221/lab635/professer1.html"
+  doc = Nokogiri::HTML(open(url))
+
+  categories = []
+
+  doc.css(".style61").each do |category|
+    categories << category.text.strip
+  end
+
+  doc.css("table").each_with_index do |table, i|
+    category = Category.find_by_name(categories[i])
+
+    table.css("tr td:nth-child(2)").each do |data|
+      work = category.works.build(title: data.at_css("p").text)
+      work.save!
+    end
+  end
 end
