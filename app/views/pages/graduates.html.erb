@@ -1,3 +1,43 @@
+<% if admin_signed_in? %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">新增成員</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_for @graduate, :url => graduates_path, :html => {:class => "form-horizontal", :role => 'form' } do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="form-group">
+            <%= f.label :year, "系級", :class => "col-md-2 control-label" %>
+            <div class="col-sm-2">
+              <%= f.select(:year, @years, {}, {:class => 'form-control'}) %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, "姓名", :class => "col-md-2 control-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :name, :class => "form-control", :placeholder => "姓名" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, "Email", :class => "col-md-2 control-label" %>
+            <div class="col-sm-8">
+              <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <%= f.submit "送出", :class => "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <div>
+</div>
+<% end %>
+
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default">
@@ -6,17 +46,17 @@
       </div>
       <div class="panel-body">
         <table class="table table-bordered">
-          <h4>102 級</h4>
+        <% @show_current_graduates.each do |year| %>
+          <h4><%= year.time %> 級</h4>
           <thead>
             <tr><th>姓名</th><th>Email</th></tr>
           </thead>
           <tbody>
-            <tr><td>蘇景宸</td><td>jo790512@gmail.com</td></tr>
-            <tr><td>唐子晴</td><td>cross791217@hotmail.com</td></tr>
-            <tr><td>張育瑜</td><td>yuyu.jhang@gmail.com</td></tr>
-            <tr><td>邱柏誌</td><td>bernie_chiu@yahoo.com.tw</td></tr>
-            <tr><td>倪宇超</td><td>niyuchao@hotmail.com</td></tr>
+          <% year.graduates.each do |student|  %>
+            <tr><td><%= student.name %></td><td><%= student.email %></td></tr>
+          <% end %>
           </tbody>
+        <% end %>
         </table>
       </div>
     </div>

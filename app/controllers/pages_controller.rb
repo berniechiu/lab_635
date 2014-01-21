@@ -16,5 +16,12 @@ class PagesController < ApplicationController
     @work = Work.new
   end
 
-  def graduates; end
+  def graduates
+    if admin_signed_in?
+      current_year = Time.now.year - 1911
+      @years = (99..current_year).to_a.reverse
+      @graduate = Graduate.new
+    end
+    @show_current_graduates = Year.by_current_lab_graduates(current_year)
+  end
 end
