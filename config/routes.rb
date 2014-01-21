@@ -5,6 +5,7 @@ Lab635::Application.routes.draw do
   root :to => 'pages#index'
   get 'intro' => 'pages#intro'
   get 'professor' => 'pages#professor'
+  get 'graduates' => 'pages#graduates'
 
   # CRUD for News (Not all are used but follows RESTful pattern)
   post 'posts' => 'posts#create'
@@ -20,6 +21,10 @@ Lab635::Application.routes.draw do
   # CURD for Works
   post 'works' => 'works#create', as: "works"
   delete 'works/:id' => 'works#destroy', as: "destroy_work"
+
+  # CURD for Graduates
+  post 'graduates' => 'graduates#create', as: "graduates"
+  delete 'graduates/:id' => 'graduates#destroy', as: "destroy_graduate"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

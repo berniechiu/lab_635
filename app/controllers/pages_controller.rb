@@ -15,4 +15,6 @@ class PagesController < ApplicationController
     @categories = Category.all
     @work = Work.new
   end
+
+  def graduates; end
 end
