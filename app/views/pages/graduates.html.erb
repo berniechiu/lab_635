@@ -45,19 +45,21 @@
         <h3 class="panel-title">目前成員</h3>
       </div>
       <div class="panel-body">
-        <table class="table table-bordered">
         <% @show_current_graduates.each do |year| %>
-          <h4><%= year.time %> 級</h4>
-          <thead>
-            <tr><th>姓名</th><th>Email</th></tr>
-          </thead>
-          <tbody>
-          <% year.graduates.each do |student|  %>
-            <tr><td><%= student.name %></td><td><%= student.email %></td></tr>
+          <% if not year.graduates.blank? %>
+            <h4><%= year.time %> 級</h4>
+            <table class="table table-bordered">
+              <thead>
+                <tr><th>姓名</th><th>Email</th></tr>
+              </thead>
+              <tbody>
+              <% year.graduates.each do |student|  %>
+                <tr><td><%= student.name %></td><td><%= student.email %></td></tr>
+              <% end %>
+              </tbody>
+            </table>
           <% end %>
-          </tbody>
         <% end %>
-        </table>
       </div>
     </div>
   <div>

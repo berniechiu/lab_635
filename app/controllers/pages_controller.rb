@@ -22,6 +22,6 @@ class PagesController < ApplicationController
       @years = (99..current_year).to_a.reverse
       @graduate = Graduate.new
     end
-    @show_current_graduates = Year.by_current_lab_graduates(current_year)
+    @show_current_graduates = Year.by_current_lab_graduates(current_year).reverse
   end
 end
