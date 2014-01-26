@@ -21,5 +21,8 @@ class GraduatesController < ApplicationController
   end
 
   def destroy
+    graduate = Graduate.find(params[:id])
+    graduate.destroy
+    redirect_to graduates_path
   end
 end

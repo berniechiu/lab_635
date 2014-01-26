@@ -45,19 +45,21 @@
         <h3 class="panel-title">目前成員</h3>
       </div>
       <div class="panel-body">
-        <% @show_current_graduates.each do |year| %>
-          <% if not year.graduates.blank? %>
-            <h4><%= year.time %> 級</h4>
-            <table class="table table-bordered">
-              <thead>
-                <tr><th>姓名</th><th>Email</th></tr>
-              </thead>
-              <tbody>
-              <% year.graduates.each do |student|  %>
-                <tr><td><%= student.name %></td><td><%= student.email %></td></tr>
-              <% end %>
-              </tbody>
-            </table>
+        <% if not @current_graduates_years.nil? %>
+          <% @current_graduates_years.each do |year| %>
+            <% if not year.graduates.blank? %>
+              <h4><%= year.time %> 級</h4>
+              <table class="table table-bordered">
+                <thead>
+                  <tr><th>姓名</th><th>Email</th></tr>
+                </thead>
+                <tbody>
+                <% year.graduates.each do |student|  %>
+                  <tr><td><%= student.name %></td><td><%= student.email %> <%= link_to("刪除", destroy_graduate_path(student), :class => "btn btn-danger btn-xs", method: :delete) if admin_signed_in? %></td></tr>
+                <% end %>
+                </tbody>
+              </table>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -72,6 +74,27 @@
         <h3 class="panel-title">畢業學長姊</h3>
       </div>
       <div class="panel-body">
+        <div class="col-sm-offset-5">
+        <%= form_tag graduates_path, :method => 'get', :html => {:class => "form-inline", :role => 'form' } do %>
+          <div class="form-group col-sm-2">
+            <%= select_tag "year", options_for_select(@past_years, params[:year]), { :class => 'form-control' } %>
+          </div>
+          <%= submit_tag "系級查詢", :name => nil, :class => "btn btn-primary btn-small" %>
+        <% end %>
+      </div>
+
+        <% if not @past_graduates.nil? %>
+          <table class="table table-bordered">
+            <thead>
+              <tr><th>姓名</th><th>Email</th></tr>
+            </thead>
+            <tbody>
+            <% @past_graduates.each do |student| %>
+              <tr><td><%= student.name %></td><td><%= student.email %></td></tr>
+            <% end %>
+            </tbody>
+          </table>
+        <% end %>
       </div>
     </div>
   <div>

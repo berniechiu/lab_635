@@ -18,10 +18,12 @@ class PagesController < ApplicationController
 
   def graduates
     current_year = Time.now.year - 1911
-    if admin_signed_in?
-      @years = (99..current_year).to_a.reverse
-      @graduate = Graduate.new
-    end
-    @show_current_graduates = Year.by_current_lab_graduates(current_year).reverse
+    @years = (99..current_year).to_a.reverse
+    @graduate = Graduate.new if admin_signed_in?
+    @past_years = @years[3..-1]
+
+    @searched_year = Year.includes(:graduates).find_by_time(params[:year]) if params[:year]
+    @past_graduates = @searched_year.graduates if @searched_year
+    @current_graduates_years = Year.includes(:graduates).by_current_lab_graduates(current_year).reverse
   end
 end

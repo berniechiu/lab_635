@@ -11,6 +11,7 @@ gem "nokogiri", "~> 1.6.1"
 
 group :development do
   gem 'sqlite3'
+  gem 'pry'
 end
 
 group :production do
