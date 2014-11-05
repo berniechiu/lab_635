@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '3.2.19'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem "devise", "~> 3.2.2"
-gem "nokogiri", "~> 1.6.1"
+gem "nokogiri", "~> 1.6.4"
 
 group :development do
   gem 'sqlite3'
