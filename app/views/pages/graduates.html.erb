@@ -6,29 +6,29 @@
         <h3 class="panel-title">新增成員</h3>
       </div>
       <div class="panel-body">
-        <%= form_for @graduate, :url => graduates_path, :html => {:class => "form-horizontal", :role => 'form' } do |f| %>
+        <%= form_for @graduate, url: graduates_path, html: { class: "form-horizontal", role: "form" } do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
           <div class="form-group">
-            <%= f.label :year, "系級", :class => "col-md-2 control-label" %>
+            <%= f.label :year, "系級", class: "col-md-2 control-label" %>
             <div class="col-sm-2">
-              <%= f.select(:year, @years, {}, {:class => 'form-control'}) %>
+              <%= f.select(:year, @years, {}, { class: "form-control" }) %>
             </div>
           </div>
           <div class="form-group">
-            <%= f.label :name, "姓名", :class => "col-md-2 control-label" %>
+            <%= f.label :name, "姓名", class: "col-md-2 control-label" %>
             <div class="col-sm-8">
-              <%= f.text_field :name, :class => "form-control", :placeholder => "姓名" %>
+              <%= f.text_field :name, class: "form-control", placeholder: "姓名" %>
             </div>
           </div>
           <div class="form-group">
-            <%= f.label :email, "Email", :class => "col-md-2 control-label" %>
+            <%= f.label :email, "Email", class: "col-md-2 control-label" %>
             <div class="col-sm-8">
-              <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+              <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <%= f.submit "送出", :class => "btn btn-primary" %>
+              <%= f.submit "送出", class: "btn btn-primary" %>
             </div>
           </div>
         <% end %>
@@ -74,12 +74,14 @@
         <h3 class="panel-title">畢業學長姊</h3>
       </div>
       <div class="panel-body">
-        <div class="col-sm-offset-5">
-        <%= form_tag graduates_path, :method => 'get', :html => {:class => "form-inline", :role => 'form' } do %>
-          <div class="form-group col-sm-2">
-            <%= select_tag "year", options_for_select(@past_years, params[:year]), { :class => 'form-control' } %>
+        <div class="col-sm-offset-4">
+        <%= form_tag graduates_path, method: 'get', html: { class: "form-inline", role: "form" } do %>
+          <div class="form-group col-sm-4">
+            <%= select_tag "year", options_for_select(@past_years, params[:year]), { class: "form-control" } %>
           </div>
-          <%= submit_tag "系級查詢", :name => nil, :class => "btn btn-primary btn-small" %>
+          <div class="form-group col-sm-4">
+            <%= submit_tag "系級查詢", name: nil, class: "btn btn-primary btn-small" %>
+          </div>
         <% end %>
       </div>
 
